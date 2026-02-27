@@ -161,4 +161,4 @@ REST_FRAMEWORK = {
     ),
 }
 DEBUG = False
-ALLOWED_HOSTS = ["yourusername.pythonanywhere.com"]
+ALLOWED_HOSTS = ["mujeebmoiz23.pythonanywhere.com"]
