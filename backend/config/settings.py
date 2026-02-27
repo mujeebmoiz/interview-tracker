@@ -160,5 +160,5 @@ REST_FRAMEWORK = {
         'django_filters.rest_framework.DjangoFilterBackend',
     ),
 }
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ["mujeebmoiz23.pythonanywhere.com"]
