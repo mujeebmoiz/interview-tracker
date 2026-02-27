@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)x$0q%_692nnuo#b!!mz*vz6hkp&7-krd-dxo%l*1du!o=aoo-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
 
 ALLOWED_HOSTS = []
 
@@ -146,3 +146,5 @@ REST_FRAMEWORK = {
         'django_filters.rest_framework.DjangoFilterBackend',
     ),
 }
+DEBUG = False
+ALLOWED_HOSTS = ["yourusername.pythonanywhere.com"]

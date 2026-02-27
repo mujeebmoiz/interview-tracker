@@ -34,6 +34,8 @@ class JobApplication(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    url = models.URLField(blank=True, null=True)
+
     class Meta:
         ordering = ["-created_at"]
         unique_together = ("user", "company_name", "job_title")
