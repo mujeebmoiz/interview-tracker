@@ -23,10 +23,24 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)x$0q%_692nnuo#b!!mz*vz6hkp&7-krd-dxo%l*1du!o=aoo-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
 
-ALLOWED_HOSTS = []
-TEMPLATES[0]['DIRS'] = [BASE_DIR / "static"]
+
 
 # Application definition
 
@@ -59,7 +73,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "static"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
