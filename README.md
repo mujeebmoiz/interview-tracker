@@ -1,5 +1,7 @@
 # Interview Tracker
 
+DB Design document
+https://docs.google.com/document/d/1kKp5moGEEbnvhpaSYG9Nyh8xB0l9umlt8jQuAM2oCKs/edit?usp=sharing
 ## Technologies Used
 - Django + Django REST Framework
 - JWT Authentication
