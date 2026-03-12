@@ -13,8 +13,12 @@ Users track their Interviews and job applications using this simple Interview tr
 
 <img width="1504" height="1104" alt="image" src="https://github.com/user-attachments/assets/bed83d43-d5f2-4768-977e-3be08575fb10" />
 
+Connected functioning google extension with Chrome
+<img width="2021" height="1150" alt="image" src="https://github.com/user-attachments/assets/b2cdc43f-524c-40ac-ba66-77fe5928dd8b" />
+
+
 ## Future Additions 
 - Implement a reminders system that automaticallly emails to the user email
-- Make this into an extension for Chrome that will be initiallized when on job sites
+✓ Make this into an extension for Chrome that will be initiallized when on job sites
 - Add filtering for the job application cards to filter based on status and Text search
 - Host on AWS Site
