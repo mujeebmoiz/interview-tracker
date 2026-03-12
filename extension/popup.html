@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interview Tracker</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-left">
+      <span class="logo">IT</span>
+      <span class="header-title">Interview Tracker</span>
+    </div>
+    <div class="header-right">
+      <button id="settingsBtn" class="icon-btn" title="Settings">&#9881;</button>
+    </div>
+  </header>
+
+  <!-- Login View -->
+  <div id="loginView" class="view">
+    <p class="hint">Sign in to save job applications.</p>
+    <form id="loginForm">
+      <div class="field">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Username" required autocomplete="username" />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Password" required autocomplete="current-password" />
+      </div>
+      <div id="loginError" class="error hidden"></div>
+      <button type="submit" class="btn btn-primary" id="loginBtn">Sign In</button>
+    </form>
+    <p class="auth-toggle">Don't have an account? <button id="showRegisterBtn" class="link-btn">Create one</button></p>
+  </div>
+
+  <!-- Register View -->
+  <div id="registerView" class="view hidden">
+    <p class="hint">Create your Interview Tracker account.</p>
+    <form id="registerForm">
+      <div class="field">
+        <label for="regUsername">Username</label>
+        <input type="text" id="regUsername" placeholder="Username" required autocomplete="username" />
+      </div>
+      <div class="field">
+        <label for="regEmail">Email</label>
+        <input type="email" id="regEmail" placeholder="email@example.com" required autocomplete="email" />
+      </div>
+      <div class="field">
+        <label for="regPassword">Password</label>
+        <input type="password" id="regPassword" placeholder="Password" required autocomplete="new-password" />
+      </div>
+      <div class="field">
+        <label for="regConfirm">Confirm Password</label>
+        <input type="password" id="regConfirm" placeholder="Confirm password" required autocomplete="new-password" />
+      </div>
+      <div id="registerError" class="error hidden"></div>
+      <button type="submit" class="btn btn-primary" id="registerBtn">Create Account</button>
+    </form>
+    <p class="auth-toggle">Already have an account? <button id="showLoginBtn" class="link-btn">Sign in</button></p>
+  </div>
+
+  <!-- App View (logged in) -->
+  <div id="appView" class="view hidden">
+    <!-- Detection banner (always visible) -->
+    <div id="detectedBanner" class="banner">
+      <span id="detectedText">Scanning page…</span>
+      <button id="refreshExtractBtn" class="link-btn">Extract</button>
+    </div>
+
+    <form id="appForm">
+      <div class="form-row">
+        <div class="field">
+          <label for="company">Company *</label>
+          <input type="text" id="company" placeholder="Company name" required />
+        </div>
+        <div class="field">
+          <label for="status">Status</label>
+          <select id="status">
+            <option value="APPLIED">Applied</option>
+            <option value="OA">Online Assessment</option>
+            <option value="INTERVIEW">Interview</option>
+            <option value="OFFER">Offer</option>
+            <option value="REJECTED">Rejected</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="jobTitle">Job Title *</label>
+        <input type="text" id="jobTitle" placeholder="e.g. Software Engineer" required />
+      </div>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="location">Location</label>
+          <input type="text" id="location" placeholder="City, Remote…" />
+        </div>
+        <div class="field">
+          <label for="appDate">Date</label>
+          <input type="date" id="appDate" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="salary">Salary Range</label>
+        <input type="text" id="salary" placeholder="Auto-detected or enter manually" />
+      </div>
+
+      <div class="field">
+        <label for="url">Job URL</label>
+        <input type="url" id="url" placeholder="https://…" />
+      </div>
+
+      <div class="field">
+        <label for="notes">Notes</label>
+        <textarea id="notes" rows="2" placeholder="Any notes…"></textarea>
+      </div>
+
+      <div id="submitError" class="error hidden"></div>
+      <div id="submitSuccess" class="success hidden">Application saved!</div>
+
+      <div class="actions">
+        <button type="button" id="autofillBtn" class="btn btn-secondary" title="Autofill application form fields on this page">
+          Autofill Page
+        </button>
+        <button type="submit" class="btn btn-primary" id="saveBtn">Save Application</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Footer (shown when logged in) -->
+  <div id="appFooter" class="footer hidden">
+    <button id="viewAllBtn" class="footer-link">View all applications &#8599;</button>
+    <span class="footer-divider">·</span>
+    <button id="logoutBtn" class="footer-link footer-signout">Sign Out</button>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
