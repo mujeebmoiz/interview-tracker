@@ -19,6 +19,6 @@ Connected functioning google extension with Chrome
 
 ## Future Additions 
 ✓ Make this into an extension for Chrome that will be initiallized when on job sites
-- Implement a reminders system that automaticallly emails to the user email
+- Implement an AI based feature to add more value
 - Add filtering for the job application cards to filter based on status and Text search
 - Host on AWS Site
