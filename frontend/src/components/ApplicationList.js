@@ -31,7 +31,59 @@ function ApplicationList({ applications, onSelect }) {
 
               {app.salary_range && (
                 <p className="text-sm font-medium text-gray-700 mt-1">
-                  {app.salary_range}
+                  {(() => {
+                    const raw = app.salary_range.trim();
+                    const lower = raw.toLowerCase();
+
+                    const isHourly =
+                      lower.includes("/hr") ||
+                      lower.includes("hr") ||
+                      lower.includes("hour");
+                    const isYearly =
+                      lower.includes("/yr") ||
+                      lower.includes("year") ||
+                      lower.includes(",") ||
+                      lower.includes("k");
+
+                    const parseNum = (s) => {
+                      const clean = s.replace(/[$,\s]/g, "").trim();
+                      const hasK = /k$/i.test(clean);
+                      const num = parseFloat(clean.replace(/k$/i, ""));
+                      if (isNaN(num)) return null;
+                      return hasK ? num * 1000 : num;
+                    };
+
+                    const formatNum = (n) =>
+                      n % 1 === 0
+                        ? n.toLocaleString("en-US")
+                        : n.toLocaleString("en-US", { minimumFractionDigits: 2 });
+
+                    // Strip leading $ and suffix text to isolate the numeric range
+                    const stripped = raw.replace(/^\$/, "").replace(/\/?(hr|yr|hour|year)\w*/gi, "").trim();
+
+                    // Check for range (e.g. 50,000-90,000, 25–30, $130K – $250K)
+                    const rangeParts = stripped.split(/\s*[\-–]\s*/);
+                    let formatted;
+                    if (rangeParts.length === 2) {
+                      const lo = parseNum(rangeParts[0]);
+                      const hi = parseNum(rangeParts[1]);
+                      if (lo !== null && hi !== null) {
+                        formatted = `$${formatNum(lo)}-$${formatNum(hi)}`;
+                      } else {
+                        formatted = `$${stripped}`;
+                      }
+                    } else {
+                      const val = parseNum(stripped);
+                      formatted = val !== null ? `$${formatNum(val)}` : `$${stripped}`;
+                    }
+
+                    // Determine suffix: if neither keyword present, use value size
+                    const firstVal = parseNum(rangeParts[0]);
+                    const inferHourly = !isYearly && (isHourly || (firstVal !== null && firstVal < 1000));
+                    const suffix = inferHourly ? "/hr" : "/yr";
+
+                    return `${formatted}${suffix}`;
+                  })()}
                 </p>
               )}
             </div>
